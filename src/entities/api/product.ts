@@ -12,7 +12,18 @@ const api = index.injectEndpoints({
       }),
       providesTags: ["product"],
     }),
+    ProductIsFavorite: build.mutation<
+      Product.ProductIsFavoriteResponse,
+      Product.ProductIsFavoriteRequest
+    >({
+      query: ({ id, data }) => ({
+        url: `/pizza/${id}`,
+        method: "PATCH",
+        body: data,
+      }),
+      invalidatesTags: ["product"],
+    }),
   }),
 });
 
-export const { useGetProductsQuery } = api;
+export const { useGetProductsQuery, useProductIsFavoriteMutation } = api;

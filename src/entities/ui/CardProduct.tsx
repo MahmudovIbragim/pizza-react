@@ -5,13 +5,14 @@ import Button from "../../shared/ui/button/Button";
 
 interface TypeProps {
   item: Product.Data;
+  handleClick: () => void;
 }
-const CardProduct: FC<TypeProps> = ({ item }) => {
+const CardProduct: FC<TypeProps> = ({ item, handleClick }) => {
   return (
     <div className={scss.CardProduct}>
       <div className={scss.card_image}>
         <img src={item.productImg} alt="" />
-        <button className={scss.icon}>
+        <button className={scss.icon} onClick={handleClick}>
           <Heart color="red" strokeWidth={2} size={26} />
         </button>
       </div>

@@ -20,4 +20,20 @@ namespace Product {
     data: Data[];
   };
   type GetProductRequest = void;
+
+  type ProductIsFavoriteResponse = {
+    success: boolean;
+    current_page: number;
+    per_page: number;
+    total_pages: number;
+    total_items: number;
+    data: Data[];
+  };
+
+  type ProductIsFavoriteRequest = {
+    id: number;
+    data: {
+      favorite: boolean;
+    };
+  };
 }

@@ -1,8 +1,18 @@
-import { useGetProductsQuery } from "../../entities/api/product";
+import {
+  useGetProductsQuery,
+  useProductIsFavoriteMutation,
+} from "../../entities/api/product";
 import CardProduct from "../../entities/ui/CardProduct";
 import scss from "./CardsContainer.module.scss";
 const CardsContainer = () => {
   const { data } = useGetProductsQuery();
+  const [productIsFavorite] = useProductIsFavoriteMutation();
+
+  const handleFavorite = async (id: number) => {
+    console.log(id);
+
+    await productIsFavorite({ id, data: { favorite: true } });
+  };
   return (
     <div className={scss.CardsContainer}>
       <div className="container">
@@ -11,8 +21,11 @@ const CardsContainer = () => {
             {data &&
               data.data.map((item) => (
                 <>
-                  <CardProduct key={item._id}  item={item}/>
-                  <CardProduct key={item._id}  item={item}/>
+                  <CardProduct
+                    key={item._id}
+                    item={item}
+                    handleClick={() => handleFavorite(item._id)}
+                  />
                 </>
               ))}
           </div>
