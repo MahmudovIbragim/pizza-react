@@ -1,0 +1,47 @@
+.Header {
+  margin: 45px 0px;
+  .content {
+    display: flex;
+    align-items: center;
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      max-width: 200px;
+      width: 100%;
+      img {
+        max-width: 35px;
+      }
+      .logo_content {
+        width: 100%;
+        h2 {
+          font-family: var(--font-family);
+          font-weight: 900;
+          font-size: 24px;
+          line-height: 100%;
+          text-transform: uppercase;
+        }
+        p {
+          font-family: var(--font-family);
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 100%;
+          color: var(--desc-color);
+          width: max-content;
+        }
+      }
+    }
+    .search_content {
+      padding: 0px 40px;
+      width: 100%;
+    }
+    .btns {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 205px;
+      width: 100%;
+    }
+  }
+}
