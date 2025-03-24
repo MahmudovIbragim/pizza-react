@@ -5,11 +5,13 @@ interface TypeProps {
   children: ReactNode;
   onClick?: () => void;
   orangeTheme: boolean;
+  disable?:boolean
 }
-const Button: FC<TypeProps> = ({ children, onClick, orangeTheme }) => {
+const Button: FC<TypeProps> = ({ children, onClick, orangeTheme,disable }) => {
   return (
     <button
       onClick={onClick}
+      disabled={disable}
       className={`${scss.Button} ${orangeTheme ? scss.ButtonOrange : ""}`}
     >
       {children}
