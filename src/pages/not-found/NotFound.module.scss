@@ -1,0 +1,44 @@
+.NotFound {
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap:wrap;
+    min-height: 80vh;
+    gap: 50px;
+    .left_content {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      gap: 10px;
+      h1 {
+        font-family: var(--font-family);
+        font-weight: 800;
+        font-size: 40px;
+        line-height: 100%;
+        letter-spacing: -0.3%;
+      }
+      p {
+        max-width: 445px;
+        font-family: Nunito;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 100%;
+        letter-spacing: -0.3%;
+        color: var(--desc-color);
+      }
+      .btns {
+        display: flex;
+        justify-content: start;
+        margin-top: 35px;
+      }
+    }
+    .right_content {
+      img {
+        object-fit: cover;
+        user-select: none;
+        -webkit-user-drag: none;
+      }
+    }
+  }
+}

@@ -10,44 +10,14 @@ namespace Product {
     productSize: string;
     quantity: number;
   };
-  type GetProductResponse = {
-    id: number;
-    price: number;
-    title: string;
-    isBasket: boolean;
-    isFavorite: boolean;
-    productImg: string;
-    description: string;
-    productSize: string;
-    quantity: number;
-  }[];
+  type GetProductResponse = Data[];
   type GetProductRequest = void;
 
-  type ProductIsFavoriteResponse = {
-    id: number;
-    price: number;
-    title: string;
-    isBasket: boolean;
-    avorite: boolean;
-    productImg: string;
-    description: string;
-    productSize: string;
-    quantity: number;
-  };
+  type ProductIsResponse = Data;
 
-  type ProductIsFavoriteRequest = {
+  type ProductIsRequest = {
     id: number;
-    data: {
-      id: number;
-      price: number;
-      title: string;
-      isBasket: boolean;
-      isFavorite: boolean;
-      productImg: string;
-      description: string;
-      productSize: string;
-      quantity: number;
-    };
+    data: Data;
   };
 
   type DeleteProductResponse = void;

@@ -13,8 +13,8 @@ const api = index.injectEndpoints({
       providesTags: ["product"],
     }),
     ProductIsFavorite: build.mutation<
-      Product.ProductIsFavoriteResponse,
-      Product.ProductIsFavoriteRequest
+      Product.ProductIsResponse,
+      Product.ProductIsRequest
     >({
       query: ({ id, data }) => ({
         url: `/product/${id}`,
@@ -23,7 +23,10 @@ const api = index.injectEndpoints({
       }),
       invalidatesTags: ["product"],
     }),
-    ProductIsBasket: build.mutation({
+    ProductIsBasket: build.mutation<
+      Product.ProductIsResponse,
+      Product.ProductIsRequest
+    >({
       query: ({ id, data }) => ({
         url: `/product/${id}`,
         method: "PUT",
