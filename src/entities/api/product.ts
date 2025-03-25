@@ -23,6 +23,14 @@ const api = index.injectEndpoints({
       }),
       invalidatesTags: ["product"],
     }),
+    ProductIsBasket: build.mutation({
+      query: ({ id, data }) => ({
+        url: `/product/${id}`,
+        method: "PUT",
+        body: data,
+      }),
+      invalidatesTags: ["product"],
+    }),
     DeleteProduct: build.mutation<
       Product.DeleteProductResponse,
       Product.DeleteProductRequest
@@ -40,4 +48,5 @@ export const {
   useGetProductsQuery,
   useProductIsFavoriteMutation,
   useDeleteProductMutation,
+  useProductIsBasketMutation,
 } = api;

@@ -31,6 +31,7 @@ const Header = () => {
                 onClick={() => setOpenDrop(!openDrop)}
               >
                 <User size={20} />
+
                 <p> Страницы</p>
               </Button>
               <div

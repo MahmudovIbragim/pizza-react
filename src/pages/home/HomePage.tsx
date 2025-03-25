@@ -3,7 +3,12 @@ import CardsContainer from "../../widgets/cardsContainer/CardsContainer";
 const HomePage = () => {
   return (
     <>
-      <CardsContainer />
+      <section>
+        <div className="container">
+          <h1>Home</h1>
+          <CardsContainer />
+        </div>
+      </section>
     </>
   );
 };

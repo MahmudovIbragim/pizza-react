@@ -8,11 +8,15 @@ interface TypeProps {
   favoriteClick: () => void;
   basketClick: () => void;
   deleteClick: () => void;
+  quantityMax: () => void;
+  quantityMin: () => void;
 }
 const CardProduct: FC<TypeProps> = ({
   item,
   favoriteClick,
   basketClick,
+  quantityMax,
+  quantityMin,
   deleteClick,
 }) => {
   return (
@@ -43,11 +47,11 @@ const CardProduct: FC<TypeProps> = ({
           {item.isBasket ? (
             <>
               <div className={scss.quantity_product}>
-                <Button orangeTheme={false}>
+                <Button onClick={quantityMin} orangeTheme={false}>
                   <MinusIcon size={18} />
                 </Button>
                 <h3>{item.quantity}</h3>
-                <Button orangeTheme={false}>
+                <Button onClick={quantityMax} orangeTheme={false}>
                   <Plus size={18} />
                 </Button>
               </div>
