@@ -62,18 +62,46 @@
     justify-content: space-between;
     align-items: center;
     p {
-      font-family: Nunito;
+      font-family: var(--font-family);
       font-weight: 700;
       font-size: 20px;
       line-height: 100%;
       letter-spacing: 0%;
     }
-    .add_to_basket {
+    .delete_btn {
       &:hover {
-        button {
+        background-color: transparent;
+
+        color: var(--orange-color);
+        transition: 0.3s;
+      }
+    }
+    .add_to_basket {
+      .add_btn {
+        &:hover {
           background-color: var(--orange-color);
           color: #fff;
           transition: 0.3s;
+        }
+      }
+      .quantity_product {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        h3 {
+          font-family: var(--font-family);
+          font-weight: 700;
+          font-size: 20px;
+          line-height: 100%;
+          letter-spacing: 0%;
+        }
+        button {
+          padding: 12px;
+          &:hover {
+            background-color: var(--orange-color);
+            color: #fff;
+            transition: 0.3s;
+          }
         }
       }
     }

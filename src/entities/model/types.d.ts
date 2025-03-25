@@ -1,39 +1,55 @@
 namespace Product {
   type Data = {
-    _id: number;
+    id: number;
     price: number;
     title: string;
-    basket: boolean;
-    favorite: boolean;
-    createdAt: string;
-    updatedAt: string;
+    isBasket: boolean;
+    isFavorite: boolean;
     productImg: string;
     description: string;
     productSize: string;
+    quantity: number;
   };
   type GetProductResponse = {
-    success: boolean;
-    current_page: number;
-    per_page: number;
-    total_pages: number;
-    total_items: number;
-    data: Data[];
-  };
+    id: number;
+    price: number;
+    title: string;
+    isBasket: boolean;
+    isFavorite: boolean;
+    productImg: string;
+    description: string;
+    productSize: string;
+    quantity: number;
+  }[];
   type GetProductRequest = void;
 
   type ProductIsFavoriteResponse = {
-    success: boolean;
-    current_page: number;
-    per_page: number;
-    total_pages: number;
-    total_items: number;
-    data: Data[];
+    id: number;
+    price: number;
+    title: string;
+    isBasket: boolean;
+    avorite: boolean;
+    productImg: string;
+    description: string;
+    productSize: string;
+    quantity: number;
   };
 
   type ProductIsFavoriteRequest = {
     id: number;
     data: {
-      favorite: boolean;
+      id: number;
+      price: number;
+      title: string;
+      isBasket: boolean;
+      isFavorite: boolean;
+      productImg: string;
+      description: string;
+      productSize: string;
+      quantity: number;
     };
   };
+
+  type DeleteProductResponse = void;
+  type DeleteProductRequest = number;
 }

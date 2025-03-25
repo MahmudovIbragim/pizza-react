@@ -7,7 +7,7 @@ const api = index.injectEndpoints({
       Product.GetProductRequest
     >({
       query: () => ({
-        url: "/pizza",
+        url: "/product",
         method: "GET",
       }),
       providesTags: ["product"],
@@ -17,13 +17,27 @@ const api = index.injectEndpoints({
       Product.ProductIsFavoriteRequest
     >({
       query: ({ id, data }) => ({
-        url: `/pizza/${id}`,
-        method: "PATCH",
+        url: `/product/${id}`,
+        method: "PUT",
         body: data,
+      }),
+      invalidatesTags: ["product"],
+    }),
+    DeleteProduct: build.mutation<
+      Product.DeleteProductResponse,
+      Product.DeleteProductRequest
+    >({
+      query: (id) => ({
+        url: `/product/${id}`,
+        method: "DELETE",
       }),
       invalidatesTags: ["product"],
     }),
   }),
 });
 
-export const { useGetProductsQuery, useProductIsFavoriteMutation } = api;
+export const {
+  useGetProductsQuery,
+  useProductIsFavoriteMutation,
+  useDeleteProductMutation,
+} = api;

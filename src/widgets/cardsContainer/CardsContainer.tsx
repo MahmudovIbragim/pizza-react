@@ -1,4 +1,5 @@
 import {
+  useDeleteProductMutation,
   useGetProductsQuery,
   useProductIsFavoriteMutation,
 } from "../../entities/api/product";
@@ -7,11 +8,20 @@ import scss from "./CardsContainer.module.scss";
 const CardsContainer = () => {
   const { data } = useGetProductsQuery();
   const [productIsFavorite] = useProductIsFavoriteMutation();
+  const [deleteProduct] = useDeleteProductMutation();
+
+  const handleDeleteProduct = async (id: number) => {
+    await deleteProduct(id);
+  };
 
   const handleFavorite = async (id: number) => {
-    console.log(id);
+    const findData = data?.find((item) => item.id === id);
+    if (!findData) return;
 
-    await productIsFavorite({ id, data: { favorite: true } });
+    await productIsFavorite({
+      id,
+      data: { ...findData, isFavorite: !findData?.isFavorite },
+    });
   };
   return (
     <div className={scss.CardsContainer}>
@@ -19,12 +29,14 @@ const CardsContainer = () => {
         <div className={scss.content}>
           <div className={scss.cards}>
             {data &&
-              data.data.map((item) => (
+              data.map((item) => (
                 <>
                   <CardProduct
-                    key={item._id}
+                    key={item.id}
                     item={item}
-                    handleClick={() => handleFavorite(item._id)}
+                    favoriteClick={() => handleFavorite(item.id)}
+                    basketClick={() => {}}
+                    deleteClick={() => handleDeleteProduct(item.id)}
                   />
                 </>
               ))}
