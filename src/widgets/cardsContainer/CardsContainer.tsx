@@ -6,7 +6,12 @@ import {
 } from "../../entities/api/product";
 import CardProduct from "../../entities/ui/CardProduct";
 import scss from "./CardsContainer.module.scss";
-const CardsContainer = () => {
+
+interface TypeProps {
+  filter: boolean;
+}
+
+const CardsContainer = ({ filter }: TypeProps) => {
   const { data } = useGetProductsQuery();
   const [productIsFavorite] = useProductIsFavoriteMutation();
   const [deleteProduct] = useDeleteProductMutation();
@@ -43,6 +48,7 @@ const CardsContainer = () => {
       data: { ...findData, quantity: findData?.quantity + 1 },
     });
   };
+
   const handleMinQuantity = async (id: number) => {
     const findData = data?.find((item) => item.id === id);
     if (!findData) return;
@@ -62,22 +68,39 @@ const CardsContainer = () => {
     <div className={scss.CardsContainer}>
       <div className={scss.content}>
         <div className={scss.cards}>
-          {data &&
-            data.map((item) => (
-              <>
-                <CardProduct
-                  key={item.id}
-                  item={item}
-                  favoriteClick={() => handleAddFavorite(item.id)}
-                  basketClick={() => {
-                    handleAddBasket(item.id);
-                  }}
-                  quantityMax={() => handleMaxQuantity(item.id)}
-                  quantityMin={() => handleMinQuantity(item.id)}
-                  deleteClick={() => handleDeleteProduct(item.id)}
-                />
-              </>
-            ))}
+          {data && filter
+            ? data
+                .filter((el) => el.isFavorite === true)
+                .map((item) => (
+                  <>
+                    <CardProduct
+                      key={item.id}
+                      item={item}
+                      favoriteClick={() => handleAddFavorite(item.id)}
+                      basketClick={() => {
+                        handleAddBasket(item.id);
+                      }}
+                      quantityMax={() => handleMaxQuantity(item.id)}
+                      quantityMin={() => handleMinQuantity(item.id)}
+                      deleteClick={() => handleDeleteProduct(item.id)}
+                    />
+                  </>
+                ))
+            : data?.map((item) => (
+                <>
+                  <CardProduct
+                    key={item.id}
+                    item={item}
+                    favoriteClick={() => handleAddFavorite(item.id)}
+                    basketClick={() => {
+                      handleAddBasket(item.id);
+                    }}
+                    quantityMax={() => handleMaxQuantity(item.id)}
+                    quantityMin={() => handleMinQuantity(item.id)}
+                    deleteClick={() => handleDeleteProduct(item.id)}
+                  />
+                </>
+              ))}
         </div>
       </div>
     </div>

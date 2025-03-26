@@ -14,8 +14,8 @@ const Layout = () => {
       <Header />
       <main>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/:id" element={<About />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/product/:id" element={<About />} />
           <Route path="/basket" element={<Basket />} />
           <Route path="/favorite" element={<Favorite />} />
           <Route path="/add-card" element={<AddCard />} />

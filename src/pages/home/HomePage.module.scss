@@ -1,0 +1,14 @@
+.title_section {
+  h1 {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: 0%;
+  }
+  .filter_content {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+  }
+}

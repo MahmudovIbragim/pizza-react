@@ -1,0 +1,47 @@
+.checkbox {
+  --light: rgba(207, 205, 205, 0.247);
+  --primary-color: var(--orange-color);
+  --duration: 0.3s;
+  --ease: ease-in-out;
+}
+
+.checkbox input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox label {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+}
+
+.checkbox label span {
+  margin-left: 8px;
+  user-select: none;
+}
+
+.checkbox svg {
+  height: 26px;
+  width: 26px;
+  border-radius: 5px;
+}
+
+.checkbox svg > rect {
+  fill: var(--light);
+  stroke: var(--orange-color);
+  stroke-dasharray: 400%;
+  stroke-dashoffset: 400%;
+  transition: var(--duration) stroke-dashoffset var(--ease);
+}
+
+.checkbox svg path {
+  stroke: var(--primary-color);
+  stroke-dasharray: 100%;
+  stroke-dashoffset: 100%;
+  transition: var(--duration) stroke-dashoffset var(--ease);
+}
+
+.checkbox input[type="checkbox"]:checked + label svg > rect,
+.checkbox input[type="checkbox"]:checked + label svg path {
+  stroke-dashoffset: 0;
+}
