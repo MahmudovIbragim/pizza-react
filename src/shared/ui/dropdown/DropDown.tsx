@@ -21,15 +21,6 @@ const DropDown = ({ openDrop, setOpenDrop }: TypeProps) => {
       >
         <button
           onClick={() => {
-            navigate("/favorite");
-            setOpenDrop(false);
-          }}
-          disabled={openDrop ? false : true}
-        >
-          Нравится
-        </button>
-        <button
-          onClick={() => {
             navigate("/add-card");
             setOpenDrop(false);
           }}

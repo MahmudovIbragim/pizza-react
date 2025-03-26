@@ -2,16 +2,13 @@ import scss from "./Header.module.scss";
 import pizzaLogo from "../../shared/assets/images/logo.png";
 import Search from "../search/Search";
 import Button from "../../shared/ui/button/Button";
-import { Home, ShoppingCart } from "lucide-react";
-import { useLocation, useNavigate } from "react-router-dom";
+import {  ShoppingCart } from "lucide-react";
 import { useState } from "react";
 import DropDown from "../../shared/ui/dropdown/DropDown";
 import BasketDrawer from "../basketDrawer/BasketDrawer";
 
 const Header = () => {
   const [openDrop, setOpenDrop] = useState(false);
-  const navigate = useNavigate();
-  const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -36,7 +33,7 @@ const Header = () => {
                 setIsOpen((prevState) => !prevState);
               }}
             >
-              {location.pathname === "/basket" ? <Home /> : <ShoppingCart />}
+              <ShoppingCart />
             </Button>
             <BasketDrawer isOpen={isOpen} setIsOpen={setIsOpen} />
           </div>
